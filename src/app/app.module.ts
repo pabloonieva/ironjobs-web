@@ -11,13 +11,15 @@ import { SessionService } from './shared/services/session.services';
 import { routes } from './app.routes';
 import { NavbarComponent } from './components/misc/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
