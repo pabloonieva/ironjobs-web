@@ -1,6 +1,7 @@
-<p>Hello</p>
+<br><hr>
+<p>Here we can see all offers for ironhackers:</p>
 <ul>
     <li *ngFor="let offer of offers">
-      {{ offer.title }}
+      <p> Job title: {{ offer.title }} &ensp;  Company: {{ offer.company }} &ensp; Salary: {{ offer.salary }}  </p>
     </li>
-  </ul>
+</ul>

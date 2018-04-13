@@ -13,6 +13,7 @@ import { routes } from './app.routes';
 import { NavbarComponent } from './components/misc/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { ListOffersComponent } from './components/list-offers/list-offers.component';
+import { CreateOfferComponent } from './components/create-offer/create-offer.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ListOffersComponent } from './components/list-offers/list-offers.compon
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    ListOffersComponent
+    ListOffersComponent,
+    CreateOfferComponent
   ],
   imports: [
     BrowserModule,

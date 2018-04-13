@@ -1,0 +1,25 @@
+<br>
+<hr>
+<p>Here you can create your offers for Ironhackers:</p>
+<form (ngSubmit)="onSubmitOffer()"> <!-- ngForm ?¿? -->
+  <div>
+    <input type="text" name="title" placeholder="Job title" [(ngModel)]="offer.title" required>  <!-- #title="ngModel" -->
+  </div>
+
+  <div>
+    <input type="text" name="company" placeholder="Company name" [(ngModel)]="offer.company" required>
+  </div>
+
+  <div>
+    <input type="text" name="logo" placeholder="Company logo" [(ngModel)]="offer.logo" >
+  </div>
+
+  <div>
+    <input type="text" name="title" placeholder="Job description" [(ngModel)]="offer.description" >
+  </div>
+
+  <div>
+    <input type="text" name="salary" placeholder="Salary" [(ngModel)]="offer.salary" required>
+  </div>
+
+</form>
