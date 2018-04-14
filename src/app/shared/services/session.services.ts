@@ -30,6 +30,7 @@ export class SessionService {
   }
 
   authenticate(user: User): Observable<User> {
+    console.log(user)
     return this.http.post(`${SessionService.BASE_API}/session/`, JSON.stringify(user),  SessionService.defaultOptions)
       .map(res => {
         return this.doAuthentication(res.json());
@@ -46,6 +47,9 @@ export class SessionService {
 
   private notifyUserChanges() {
     this.userSubject.next(this.user);
+  }
+  getUser(): User {
+    return this.user;
   }
 
   logout(): Observable<void> {

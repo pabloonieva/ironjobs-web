@@ -14,6 +14,7 @@ import { NavbarComponent } from './components/misc/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { ListOffersComponent } from './components/list-offers/list-offers.component';
 import { CreateOfferComponent } from './components/create-offer/create-offer.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { CreateOfferComponent } from './components/create-offer/create-offer.com
     LoginComponent,
     ListOffersComponent,
     CreateOfferComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
