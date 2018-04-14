@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   user: User;
   userSubscription: Subscription;
+  
   constructor(
     private router: Router,
     private sessionService: SessionService) { }
