@@ -20,9 +20,8 @@ export class CreateOfferComponent implements OnInit {
 
   onSubmitOffer(){
     this.offersService.create(this.offer)
-      .subscribe(
-        (offer) => {
-          this.router.navigate(['/offers']);
+      .subscribe(() => {
+          this.router.navigate(['/offers'])
       },
       (error) => {
           this.apiError = error;
