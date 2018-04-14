@@ -6,3 +6,31 @@
       <button class="btn btn-danger" (click)="onClickDelete(offer._id)">Delete</button>
     </li>
 </ul>
+
+<br>
+<hr>
+<div *ngIf="user.user.role === 'ADMIN'">
+  <p>Here you can create your offers for Ironhackers:</p>
+  <form (ngSubmit)="onSubmitOffer()"> <!-- ngForm ?¿? -->
+    <div>
+      <input type="text" name="title" placeholder="Job title" [(ngModel)]="offer.title" required>  <!-- #title="ngModel" -->
+    </div><br>
+
+    <div>
+      <input type="text" name="company" placeholder="Company name" [(ngModel)]="offer.company" required>
+    </div><br>
+
+    <div>
+      <input type="text" name="logo" placeholder="Company logo" [(ngModel)]="offer.logo" >
+    </div><br>
+
+    <div>
+      <input type="text" name="title" placeholder="Job description" [(ngModel)]="offer.description" >
+    </div><br>
+
+    <div>
+      <input type="text" name="salary" placeholder="Salary" [(ngModel)]="offer.salary" required>
+    </div><br>
+    <button type="submit">Add new Job offer</button><br>
+  </form>
+</div>

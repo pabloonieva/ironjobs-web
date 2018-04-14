@@ -7,8 +7,8 @@ import { CreateOfferComponent } from './components/create-offer/create-offer.com
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+    { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomeComponent },
     { path: 'offers', component: ListOffersComponent },
-    { path: 'offers', component: CreateOfferComponent }
+    // { path: 'offers', component: CreateOfferComponent }
 ];

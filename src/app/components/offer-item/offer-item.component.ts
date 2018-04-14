@@ -19,7 +19,7 @@ export class OfferItemComponent implements OnInit {
 
   onClickDelete(){
     if (window.confirm('Are you sure?')) {
-      this.offersService.delete(this.offer.id)
+      this.offersService.delete(this.offer._id)
         .subscribe(() => {
           this.router.navigate(['/phones']);
         });
