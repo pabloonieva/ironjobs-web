@@ -1,0 +1,10 @@
+<div *ngIf="offer">
+
+  <div class="offer-info">
+    <h2> {{ offer.title }}</h2>
+    <h3> {{ offer.company }} </h3>
+    <h3> {{ offer.salary }} </h3>
+
+    <button class="btn btn-danger" (click)="onClickDelete()">Delete</button>
+  </div>
+</div>
