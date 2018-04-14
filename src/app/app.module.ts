@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import 'rxjs';
 
@@ -15,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ListOffersComponent } from './components/list-offers/list-offers.component';
 import { CreateOfferComponent } from './components/create-offer/create-offer.component';
 import { HomeComponent } from './components/home/home.component';
+import { ModalComponent } from './components/misc/modal/modal.component';
 import { OfferItemComponent } from './components/offer-item/offer-item.component';
 
 
@@ -23,6 +25,8 @@ import { OfferItemComponent } from './components/offer-item/offer-item.component
     AppComponent,
     NavbarComponent,
     LoginComponent,
+    HomeComponent,
+    ModalComponent,
     ListOffersComponent,
     CreateOfferComponent,
     HomeComponent,
