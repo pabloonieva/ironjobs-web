@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import 'rxjs';
 
@@ -12,6 +13,7 @@ import { routes } from './app.routes';
 import { NavbarComponent } from './components/misc/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { ModalComponent } from './components/misc/modal/modal.component';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { HomeComponent } from './components/home/home.component';
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
