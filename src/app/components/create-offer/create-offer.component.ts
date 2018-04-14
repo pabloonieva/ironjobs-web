@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OffersService } from './../../shared/services/offers.service';
 import { Offer } from './../../shared/model/offer.model';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-offer',
@@ -8,11 +10,28 @@ import { Offer } from './../../shared/model/offer.model';
   styleUrls: ['./create-offer.component.css']
 })
 export class CreateOfferComponent implements OnInit {
-  offer: Offer: Array<offers>;
+  offer: Offer = new Offer();
+  apiError: string;
 
-  constructor() { }
+  constructor(
+    private offersService: OffersService,
+    private router: Router
+  ){}
+
+  onSubmitOffer(){
+    this.offersService.create(this.offer)
+      .subscribe(
+        (offer) => {
+          this.router.navigate(['/offers']);
+      },
+      (error) => {
+          this.apiError = error;
+      }
+    )
+  }
 
   ngOnInit() {
+
   }
 
 }
