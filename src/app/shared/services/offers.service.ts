@@ -15,12 +15,14 @@ export class OffersService extends BaseApiService {
 
   list(): Observable<Array<Offer>> {
     return this.http.get(OffersService.OFFERS_API, BaseApiService.defaultOptions)   //OffersService.OFFERS_API = http://localhost:3000/offers
-      .map((res: Response) => res.json())
+      .map((res: Response) => {
+        res.json()
+      })
       .catch(error => this.handleError(error));
   }
 
   create(offer: Offer): Observable<Offer> {
-    return this.http.post(OffersService.OFFERS_API, BaseApiService.defaultOptions)
+    return this.http.post(OffersService.OFFERS_API, offer, BaseApiService.defaultOptions)
       .map((res: Response) => res.json())
       .catch(error => this.handleError(error));
   }

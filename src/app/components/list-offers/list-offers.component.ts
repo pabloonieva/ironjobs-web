@@ -15,7 +15,9 @@ export class ListOffersComponent implements OnInit {
 
   ngOnInit() {
     this.offerService.list()
-      .subscribe((offers) => this.offers = offers)
+      .subscribe((offers) => {
+        this.offers = offers
+      })
   }
 
 }
