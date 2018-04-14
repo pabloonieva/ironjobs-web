@@ -22,7 +22,7 @@ export class ListOffersComponent implements OnInit {
     private router: Router,
     private offersService: OffersService,
     private sessionService: SessionService
-  ) { }
+  ){}
 
   ngOnInit() {
     this.offersService.list()
@@ -38,6 +38,10 @@ export class ListOffersComponent implements OnInit {
           this.offers = this.offers.filter(offer => offer._id !== id);
         });
     }
+  }
+
+  onClickSeeForm(){
+    $('#newJobForm').toggleClass("hideForm");
   }
 
   onSubmitOffer(){
