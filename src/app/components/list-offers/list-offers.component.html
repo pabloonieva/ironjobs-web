@@ -1,0 +1,8 @@
+<br><hr>
+<p>Here we can see all offers for ironhackers:</p>
+<ul>
+    <li *ngFor="let offer of offers">
+      <p> Job title: {{ offer.title }} &ensp;  Company: {{ offer.company }} &ensp; Salary: {{ offer.salary }}  </p>
+      <button class="btn btn-danger" (click)="onClickDelete(offer._id)">Delete</button>
+    </li>
+</ul>

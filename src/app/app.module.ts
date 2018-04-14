@@ -8,10 +8,14 @@ import 'rxjs';
 
 import { AppComponent } from './app.component';
 import { SessionService } from './shared/services/session.services';
+import { OffersService } from './shared/services/offers.service';
 import { routes } from './app.routes';
 import { NavbarComponent } from './components/misc/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
+import { ListOffersComponent } from './components/list-offers/list-offers.component';
+import { CreateOfferComponent } from './components/create-offer/create-offer.component';
 import { HomeComponent } from './components/home/home.component';
+import { OfferItemComponent } from './components/offer-item/offer-item.component';
 
 
 @NgModule({
@@ -19,7 +23,10 @@ import { HomeComponent } from './components/home/home.component';
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    HomeComponent
+    ListOffersComponent,
+    CreateOfferComponent,
+    HomeComponent,
+    OfferItemComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +34,7 @@ import { HomeComponent } from './components/home/home.component';
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [SessionService],
+  providers: [SessionService, OffersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
