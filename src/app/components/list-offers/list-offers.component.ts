@@ -42,6 +42,7 @@ export class ListOffersComponent implements OnInit {
 
   onClickSeeForm(){
     $('#newJobForm').toggleClass("hideForm");
+    $('#buttonNewJob').toggleClass("hideButton");
   }
 
   onSubmitOffer(){
