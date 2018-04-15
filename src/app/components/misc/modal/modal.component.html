@@ -1,3 +1,32 @@
-<p>
-  modal works!
-</p>
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Sign in</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="onSubmitLogin(loginForm)" #loginForm="ngForm">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="title">Email</label>
+                <input type="userEmail" name="userEmail" class="form-control" id="userEmail" [(ngModel)]="user.userEmail" required>
+              </div>
+        
+              <div class="form-group">
+                <label for="title">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" #password="ngModel" required>
+              </div>
+            </div>
+        
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid">Login</button>
+            
+            </div>
+          </form>
+    </div>
+  </ng-template>
+  
+  <button class="btn btn-outline-primary" (click)="open(content)">Log in</button>
+  
+  <pre>{{closeResult}}</pre>
