@@ -28,6 +28,10 @@ export class ListOffersComponent implements OnInit {
     this.offersService.list()
       .subscribe((offers: Array<Offer>) => this.offers = offers);
     this.user = this.sessionService.getUser();
+
+    if(this.user.role==='COMPANY'){
+      this.offer.company = this.user.name;
+    }
   }
 
   onClickDelete(id: string){
