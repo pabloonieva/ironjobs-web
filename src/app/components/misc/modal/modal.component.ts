@@ -1,14 +1,27 @@
-import { Component } from '@angular/core';
+import { User } from './../../../shared/model/user.model';
+import { SessionService } from './../../../shared/services/session.services';
+import { Component, NgModule } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
-export class ModalComponent  {
+export class ModalComponent {
+  user: User = new User();
+  apiError: string;
   closeResult: string;
-  constructor(private modalService: NgbModal) { }
+  modal: NgbModalRef;
+  constructor(
+    private modalService: NgbModal,
+    private sessionService: SessionService,
+    private router: Router
+  ) { }
 
   open(content) {
     this.modalService.open(content).result.then((result) => {
@@ -27,5 +40,15 @@ export class ModalComponent  {
       return  `with: ${reason}`;
     }
   }
-
+  onSubmitLogin(loginForm) {
+    this.sessionService.authenticate(this.user).subscribe(
+      (user) => {
+        loginForm.reset();
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        this.apiError = error.message;
+      }
+    );
+  }
 }

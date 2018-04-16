@@ -21,17 +21,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.user = this.sessionService.getUser();
     this.userSubscription = this.sessionService.onUserChanges()
-    .subscribe(user => this.user = user);
+      .subscribe(user => this.user = user);
   }
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
   }
 
   onClickLogout() {
+    if (window.confirm('Are you sure you want to log out?')) {
     this.sessionService.logout()
-      .subscribe(() => {
-        this.router.navigate(['/login']);
-      });
-  }
+      .subscribe();
+  }  }
 }
 
