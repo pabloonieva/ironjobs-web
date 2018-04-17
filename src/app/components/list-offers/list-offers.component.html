@@ -72,7 +72,7 @@
           <input class="form-control" type="text" name="title" placeholder="Job title" [(ngModel)]="offer.title" required>  <!-- #title="ngModel" -->
         </div>
         <!-- How can I add directly the company name if we are loged in as company -->
-        <div *ngIf="user.role === 'ADMIN'" class="form-group">
+        <div class="form-group">
           <label>Company name:</label>
           <input class="form-control" type="text" name="company" placeholder="Company name" [(ngModel)]="offer.company" required>
         </div>
