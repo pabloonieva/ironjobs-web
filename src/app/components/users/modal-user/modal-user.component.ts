@@ -1,3 +1,4 @@
+import { UsersService } from './../../../shared/services/users.service';
 import { User } from './../../../shared/model/user.model';
 import { SessionService } from './../../../shared/services/session.services';
 import { Component, NgModule } from '@angular/core';
@@ -18,6 +19,7 @@ export class ModalUserComponent {
   constructor(
     private modalService: NgbModal,
     private sessionService: SessionService,
+    private usersService: UsersService,
     private router: Router
   ) { }
 
@@ -36,7 +38,9 @@ export class ModalUserComponent {
     }
   }
   onSubmitEdit(editForm) {
-    
+    this.usersService.edit(this.user)
+    .subscribe()
+    }
   }
 
 }

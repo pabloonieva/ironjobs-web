@@ -26,8 +26,11 @@ export class ListOffersComponent implements OnInit {
 
   ngOnInit() {
     this.offersService.list()
-      .subscribe((offers: Array<Offer>) => this.offers = offers);
-    this.user = this.sessionService.getUser();
+      .subscribe((offers: Array<Offer>) => {
+        this.offers = offers;} ,
+        (error) => {this.router.navigate(['/home']); } );
+        this.user = this.sessionService.getUser();
+
 
     // if(this.user.role==='COMPANY'){
     //   this.offer.company = this.user.name;
