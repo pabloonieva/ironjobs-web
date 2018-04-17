@@ -5,14 +5,12 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 import { Router } from '@angular/router';
 
-
-
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  selector: 'app-modal-user',
+  templateUrl: './modal-user.component.html',
+  styleUrls: ['./modal-user.component.css']
 })
-export class ModalComponent {
+export class ModalUserComponent {
   user: User = new User();
   apiError: string;
   closeResult: string;
@@ -22,6 +20,7 @@ export class ModalComponent {
     private sessionService: SessionService,
     private router: Router
   ) { }
+
 
   open(content) {
     this.modal = this.modalService.open(content);
@@ -37,15 +36,8 @@ export class ModalComponent {
     }
   }
   onSubmitLogin(loginForm) {
-    this.sessionService.authenticate(this.user).subscribe(
-      (user) => {
-        loginForm.reset();
-        this.modal.close();
-        this.router.navigate(['/home']);
-      },
-      (error) => {
-        this.apiError = error.message;
-      }
+   
     );
   }
+
 }
