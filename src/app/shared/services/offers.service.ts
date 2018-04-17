@@ -14,7 +14,7 @@ export class OffersService extends BaseApiService {
   }
 
   list(): Observable<Array<Offer>> {
-    return this.http.get(OffersService.OFFERS_API, BaseApiService.defaultOptions)   //OffersService.OFFERS_API = http://localhost:3000/offers
+    return this.http.get(OffersService.OFFERS_API, BaseApiService.defaultOptions)
       .map((res: Response) => res.json())
       .catch(error => this.handleError(error));
   }
