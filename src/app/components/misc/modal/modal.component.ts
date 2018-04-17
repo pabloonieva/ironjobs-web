@@ -41,7 +41,7 @@ export class ModalComponent {
       (user) => {
         loginForm.reset();
         this.modal.close();
-        this.router.navigate(['/home']);
+        this.router.navigate(['/offers']);
       },
       (error) => {
         this.apiError = error.message;

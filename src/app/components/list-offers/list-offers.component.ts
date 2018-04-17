@@ -29,9 +29,9 @@ export class ListOffersComponent implements OnInit {
       .subscribe((offers: Array<Offer>) => this.offers = offers);
     this.user = this.sessionService.getUser();
 
-    if(this.user.role==='COMPANY'){
-      this.offer.company = this.user.name;
-    }
+    // if(this.user.role==='COMPANY'){
+    //   this.offer.company = this.user.name;
+    // }
   }
 
   onClickDelete(id: string){
