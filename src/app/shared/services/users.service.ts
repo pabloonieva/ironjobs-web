@@ -21,10 +21,26 @@ export class UsersService extends BaseApiService {
   }
   
   list(): Observable<Array<User>> {
-    return this.http.get(UsersService.USERS_API)
+    return this.http.get(UsersService.USERS_API, BaseApiService.defaultOptions)
       .map(res => res.json())
       .catch(error => this.handleError(error));
   }
+  create(user: User): Observable<User> {
+    return this.http.post(UsersService.USERS_API, user, BaseApiService.defaultOptions)
+      .map((res: Response) => res.json())
+      .catch(error => this.handleError(error));
+  }
 
+  edit(user: User): Observable<User> {
+    return this.http.put(`${UsersService.USERS_API}/edit/${user._id}`, BaseApiService.defaultOptions)
+      .map((res: Response) => res.json())
+      .catch(error => this.handleError(error));
+  }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete(`${UsersService.USERS_API}/delete/${id}`, BaseApiService.defaultOptions)
+      .map((res: Response) => res.json())
+      .catch(error => this.handleError(error));
+  }
 
 }

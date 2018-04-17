@@ -16,12 +16,23 @@ export class DashboardComponent implements OnInit {
   users: Array<User> = [];
   constructor(
     private router: Router,
-    private userService: UsersService
+    private usersService: UsersService
   ) { }
 
   ngOnInit() {
-    this.userService.list()
+    this.usersService.list()
     .subscribe((users: Array<User>) => this.users = users);
   }
-
+  onClickDelete(id: string) {
+    if (window.confirm('Are you sure?')) {
+      this.usersService.delete(id)
+        .subscribe(() => {
+          this.users = this.users.filter(user => user._id !== id);
+        });
+    }
+  }
+  // onClickEdit(id: string) {
+  //     this.usersService.edit(this.users.user._id)
+  //       .subscribe();
+  // }
 }

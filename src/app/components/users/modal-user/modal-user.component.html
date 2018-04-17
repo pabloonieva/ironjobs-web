@@ -1,13 +1,35 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">Sign in</h4>
+    <h4 class="modal-title">Edit User</h4>
     <button type="button" class="close" aria-label="Close" data-dismiss="content" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-      <form (ngSubmit)="onSubmitLogin(loginForm)" #loginForm="ngForm">
-          <div class="modal-body">
+      <form (ngSubmit)="onSubmitEdit(editForm)" #editForm="ngForm">
+          <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name"required
+                     [(ngModel)]="user.name" name="name">
+          </div>
+          <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text"  class="form-control" id="lastName"
+                     [(ngModel)]="model.lastName" name="lastName">
+          </div>
+          <div class="form-group">
+              <label for="userEmail">Hero Power</label>
+              <select class="form-control"  id="userEmail"
+                      required
+                      [(ngModel)]="model.userEmail" name="userEmail">
+                <option *ngFor="let role of roles" [value]="role">{{user.role}}</option>
+              </select>
+          </div>
+            
+
+
+
+          <!-- <div class="modal-body">
             <div class="form-group">
               <label for="title">Email</label>
               <input type="userEmail" name="userEmail" class="form-control" id="userEmail" [(ngModel)]="user.userEmail" required>
@@ -17,14 +39,14 @@
               <label for="title">Password</label>
               <input type="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" #password="ngModel" required>
             </div>
-          </div>
+          </div> -->
           <div class="modal-footer">
-              <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid"  >Login</button>
+              <button type="submit" class="btn btn-success" [disabled]="!editForm.valid"  >Login</button>
           </div>
         </form>
   </div>
 </ng-template>
 
-<button class="btn btn-outline-primary" (click)="open(content)">Log in</button>
+<button class="btn btn-outline-primary" (click)="open(content)">Edit</button>
 
 <pre>{{closeResult}}</pre>
