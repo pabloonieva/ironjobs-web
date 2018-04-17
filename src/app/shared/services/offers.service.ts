@@ -28,7 +28,7 @@ export class OffersService extends BaseApiService {
 //as form Data no se por qué lo usan
 
   edit(offer: Offer): Observable<Offer> {
-    return this.http.put(`${OffersService.OFFERS_API}/edit/${offer.id}`, BaseApiService.defaultOptions)
+    return this.http.put(`${OffersService.OFFERS_API}/edit/${offer._id}`, BaseApiService.defaultOptions)
       .map((res: Response) => res.json())
       .catch(error => this.handleError(error));
   }

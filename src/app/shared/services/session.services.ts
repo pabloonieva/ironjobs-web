@@ -47,6 +47,7 @@ export class SessionService {
   private notifyUserChanges() {
     this.userSubject.next(this.user);
   }
+
   getUser(): User {
     return this.user;
   }

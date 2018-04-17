@@ -1,8 +1,95 @@
-<br><hr>
-<p>Here we can see all offers for ironhackers:</p>
-<ul>
-    <li *ngFor="let offer of offers">
-      <p> Job title: {{ offer.title }} &ensp;  Company: {{ offer.company }} &ensp; Salary: {{ offer.salary }}  </p>
-      <button class="btn btn-danger" (click)="onClickDelete(offer._id)">Delete</button>
-    </li>
-</ul>
+
+  <br><hr>
+  <section class="container">
+    <h5 *ngIf="user.user.role === 'ADMIN'">Hello Admin. Here we can see and edit all offers for Ironhackers:</h5>
+    <h5 *ngIf="user.user.role === 'COMPANY'">Hello company. Here you can see all your offers for Ironhackers:</h5>
+    <h5 *ngIf="user.user.role === 'IRONHACKER'">Hey Ironhacker. Here you can see all IronJob offers:</h5>
+    <table class="table table-striped">
+      <!--IF WE ARE ADMIN-->
+      <div *ngIf="user.user.role === 'ADMIN'">
+        <thead>
+          <tr>
+            <th scope="col">Job Offer</th>
+            <th scope="col">Company</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let offer of offers">
+              <th> {{ offer.title }} </th><td> {{ offer.company }} </td><td> {{ offer.salary }}</td>
+              <td><button class="btn btn-danger" (click)="onClickDelete(offer._id)">Delete</button></td>
+          </tr>
+        </tbody>
+      </div>
+      <!--IF WE ARE AN IRONHACKER-->
+      <div *ngIf="user.user.role === 'IRONHACKER'">
+        <thead>
+          <tr>
+            <th scope="col">Job Offer</th>
+            <th scope="col">Company</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Interest</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let offer of offers">
+              <th> {{ offer.title }} </th><td> {{ offer.company }} </td><td> {{ offer.salary }}</td>
+              <td><button class="btn btn-info" (click)="onClickApply(offer._id)">Apply!</button></td>
+          </tr>
+        </tbody>
+      </div>
+        <!--IF WE ARE A COMPANY-->
+        <div *ngIf="user.user.role === 'COMPANY'">
+          <thead>
+            <tr>
+              <th scope="col">Job Offer</th>
+              <th scope="col">Company</th>
+              <th scope="col">Salary</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let offer of offers">
+                <th> {{ offer.title }} </th><td> {{ offer.company }} </td><td> {{ offer.salary }}</td>
+                <td><button class="btn btn-danger" (click)="onClickDelete(offer._id)">Delete</button></td>
+            </tr>
+          <tbody>
+        </div>
+
+    </table>
+  </section><br>
+
+<!--IF WE ARE A COMPANY or ADMIN-->
+<div *ngIf="user.user.role === 'ADMIN' || user.user.role === 'COMPANY'" class="form-group container">
+  <button class="btn btn-success" id="buttonNewJob" (click)="onClickSeeForm()">Add new Job Offer</button>
+  <div class="hideForm" id="newJobForm">
+    <p>Here you can create your offers for Ironhackers:</p>
+    <tr>
+      <form (ngSubmit)="onSubmitOffer()"> <!-- ngForm ?¿? -->
+        <div class="form-group">
+          <label>Job Title:</label>
+          <input class="form-control" type="text" name="title" placeholder="Job title" [(ngModel)]="offer.title" required>  <!-- #title="ngModel" -->
+        </div>
+        <!-- How can I add directly the company name if we are loged in as company -->
+        <div *ngIf="user.user.role === 'ADMIN'" class="form-group">
+          <label>Company name:</label>
+          <input class="form-control" type="text" name="company" placeholder="Company name" [(ngModel)]="offer.company" required>
+        </div>
+        <div class="form-group">
+          <label>Company logo:</label>
+          <input class="form-control" type="text" name="logo" placeholder="Company logo" [(ngModel)]="offer.logo" >
+        </div>
+        <div class="form-group">
+          <label>Job description</label>
+          <input class="form-control" type="text" name="title" placeholder="Job description" [(ngModel)]="offer.description" >
+        </div>
+        <div class="form-group">
+          <label>Salary:</label>
+          <input class="form-control" type="text" name="salary" placeholder="Salary" [(ngModel)]="offer.salary" required>
+        </div>
+        <button type="submit" class="btn btn-success">Add new Job offer</button>
+      </form>
+    </tr>
+  </div>
+</div>
