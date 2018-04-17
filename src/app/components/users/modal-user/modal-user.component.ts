@@ -35,9 +35,8 @@ export class ModalUserComponent {
       return  `with: ${reason}`;
     }
   }
-  onSubmitLogin(loginForm) {
-   
-    );
+  onSubmitEdit(editForm) {
+    
   }
 
 }
