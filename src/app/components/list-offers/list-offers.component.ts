@@ -25,13 +25,16 @@ export class ListOffersComponent implements OnInit {
   ){}
 
   ngOnInit() {
-    this.offersService.list()
-      .subscribe((offers: Array<Offer>) => this.offers = offers);
     this.user = this.sessionService.getUser();
 
-    // if(this.user.role==='COMPANY'){
-    //   this.offer.company = this.user.name;
-    // }
+    this.offersService.list()
+      .subscribe((offers: Array<Offer>) => {
+        if(this.user.role==='COMPANY'){
+          this.offers = offers.filter(offer => offer.company === this.user.name)
+        }else{
+          this.offers = offers
+        }
+    });
   }
 
   onClickDelete(id: string){
