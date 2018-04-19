@@ -1,7 +1,8 @@
+import { NgForm } from '@angular/forms';
 import { UsersService } from './../../../shared/services/users.service';
 import { User } from './../../../shared/model/user.model';
 import { SessionService } from './../../../shared/services/session.services';
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit, Input } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 import { Router } from '@angular/router';
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./modal-user.component.css']
 })
 export class ModalUserComponent implements OnInit {
-  user: User = new User();
+  @Input() user: User;
   users: Array<User> = [];
   apiError: string;
   closeResult: string;
@@ -41,11 +42,12 @@ export class ModalUserComponent implements OnInit {
     }
   }
   onClickEdit(id: any, content) {
-    this.usersService.edit(id)
-      .subscribe(()=>
-      this.modal = this.modalService.open(content);
+    this.usersService.currentUser(this.user);
+    this.modal = this.modalService.open(content);
       console.log(id);
-    }
-    );
-
+  }
+  onSubmitEdit() {
+    this.usersService.edit(this.user)
+    .subscribe();
+  }
 }
