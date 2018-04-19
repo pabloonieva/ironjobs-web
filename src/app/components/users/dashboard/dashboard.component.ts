@@ -1,7 +1,7 @@
 import { UsersService } from './../../../shared/services/users.service';
 import { User } from './../../../shared/model/user.model';
 import { SessionService } from './../../../shared/services/session.services';
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, NgModule, Input  } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   users: Array<User> = [];
-  user: User = new User();
+  @Input() user: User = new User();
 
   constructor(
     private router: Router,

@@ -1,7 +1,7 @@
 import { UsersService } from './../../../shared/services/users.service';
 import { User } from './../../../shared/model/user.model';
 import { SessionService } from './../../../shared/services/session.services';
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 import { Router } from '@angular/router';
@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
   templateUrl: './modal-user.component.html',
   styleUrls: ['./modal-user.component.css']
 })
-export class ModalUserComponent {
+export class ModalUserComponent implements OnInit {
   user: User = new User();
+  users: Array<User> = [];
   apiError: string;
   closeResult: string;
   modal: NgbModalRef;
+
   constructor(
     private modalService: NgbModal,
     private sessionService: SessionService,
@@ -23,10 +25,11 @@ export class ModalUserComponent {
     private router: Router
   ) { }
 
-
-  open(content) {
-    this.modal = this.modalService.open(content);
+  ngOnInit() {
+   this.usersService.list()
+   .subscribe((users: Array<User>) => this.users = users);
   }
+
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -37,10 +40,12 @@ export class ModalUserComponent {
       return  `with: ${reason}`;
     }
   }
-  onSubmitEdit(editForm) {
-    this.usersService.edit(this.user)
-    .subscribe()
+  onClickEdit(id: any, content) {
+    this.usersService.edit(id)
+      .subscribe(()=>
+      this.modal = this.modalService.open(content);
+      console.log(id);
     }
-  }
+    );
 
 }
