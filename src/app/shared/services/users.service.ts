@@ -30,9 +30,11 @@ export class UsersService extends BaseApiService {
       .map((res: Response) => res.json())
       .catch(error => this.handleError(error));
   }
-
-  edit(user: User): Observable<User> {
-    return this.http.put(`${UsersService.USERS_API}/edit/${user._id}`, BaseApiService.defaultOptions)
+  currentUser(user: User): User {
+    return this.user;
+  }
+  edit(user: User): Observable<User>  {
+    return this.http.put(`${UsersService.USERS_API}/edit/${this.user._id}`, JSON.stringify(this.user), BaseApiService.defaultOptions)
       .map((res: Response) => res.json())
       .catch(error => this.handleError(error));
   }

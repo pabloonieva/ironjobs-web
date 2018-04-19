@@ -1,7 +1,7 @@
 import { UsersService } from './../../../shared/services/users.service';
 import { User } from './../../../shared/model/user.model';
 import { SessionService } from './../../../shared/services/session.services';
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, NgModule, Input  } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -14,14 +14,19 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   users: Array<User> = [];
+  @Input() user: User = new User();
+
   constructor(
     private router: Router,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private sessionService: SessionService
   ) { }
 
   ngOnInit() {
-    this.usersService.list()
-    .subscribe((users: Array<User>) => this.users = users);
+    if (this.sessionService.getUser()) {
+      this.usersService.list()
+      .subscribe((users: Array<User>) => this.users = users);
+    }
   }
   onClickDelete(id: string) {
     if (window.confirm('Are you sure?')) {
@@ -31,8 +36,8 @@ export class DashboardComponent implements OnInit {
         });
     }
   }
-  // onClickEdit(id: string) {
-  //     this.usersService.edit(this.users.user._id)
-  //       .subscribe();
-  // }
+  onClickEdit(id: string) {
+      this.usersService.edit(this.user)
+        .subscribe();
+  }
 }

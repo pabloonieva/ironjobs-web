@@ -2,6 +2,6 @@
   <li *ngFor="let user of users">
     <p> Name: {{ user.name }} &ensp; Last name: {{ user.lastName }} &ensp;  Email: {{ user.userEmail }}  </p>
     <button class="btn btn-danger" (click)="onClickDelete(user._id)">Delete</button>
-    <button class="btn btn-danger" (click)="onClickEdit(user._id)">Edit</button>
+    <app-modal-user [user]="user"></app-modal-user>
   </li>
 </ul>
