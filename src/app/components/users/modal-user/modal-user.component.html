@@ -14,7 +14,7 @@
           </div>
           <div class="form-group">
               <label for="lastName">Last Name</label>
-              <input type="text"  class="form-control" id="lastName"
+              <input type="text" placeholder="{{user.lastName}}" class="form-control" id="lastName"
                      [(ngModel)]="user.lastName" name="lastName">
           </div>
           <div class="form-group">
@@ -30,21 +30,6 @@
                 <option *ngFor="let role of roles" [value]="role">{{user.role}}</option>
               </select>
           </div>
-            
-
-
-
-          <!-- <div class="modal-body">
-            <div class="form-group">
-              <label for="title">Email</label>
-              <input type="userEmail" name="userEmail" class="form-control" id="userEmail" [(ngModel)]="user.userEmail" required>
-            </div>
-
-            <div class="form-group">
-              <label for="title">Password</label>
-              <input type="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" #password="ngModel" required>
-            </div>
-          </div> -->
           <div class="modal-footer">
               <button type="submit" class="btn btn-success" >Edit</button>
           </div>
@@ -52,6 +37,6 @@
   </div>
 </ng-template>
 
-<button class="btn btn-outline-primary" (click)="open(content)">Edit</button>
+<button class="btn btn-outline-primary" (click)="onClickEdit(user._id, content)" >Edit</button>
 
 <pre>{{closeResult}}</pre>
