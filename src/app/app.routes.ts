@@ -11,5 +11,4 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'offers', component: ListOffersComponent },
     { path: 'users', component: DashboardComponent }
-    // { path: 'offers', component: CreateOfferComponent }
 ];
