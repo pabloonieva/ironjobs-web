@@ -14,14 +14,19 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   users: Array<User> = [];
+  user: User = new User();
+
   constructor(
     private router: Router,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private sessionService: SessionService
   ) { }
 
   ngOnInit() {
-    this.usersService.list()
-    .subscribe((users: Array<User>) => this.users = users);
+    if (this.sessionService.getUser()) {
+      this.usersService.list()
+      .subscribe((users: Array<User>) => this.users = users);
+    }
   }
   onClickDelete(id: string) {
     if (window.confirm('Are you sure?')) {
@@ -31,8 +36,8 @@ export class DashboardComponent implements OnInit {
         });
     }
   }
-  // onClickEdit(id: string) {
-  //     this.usersService.edit(this.users.user._id)
-  //       .subscribe();
-  // }
+  onClickEdit(id: string) {
+      this.usersService.edit(this.user)
+        .subscribe();
+  }
 }

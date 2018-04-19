@@ -15,13 +15,18 @@
           <div class="form-group">
               <label for="lastName">Last Name</label>
               <input type="text"  class="form-control" id="lastName"
-                     [(ngModel)]="model.lastName" name="lastName">
+                     [(ngModel)]="user.lastName" name="lastName">
           </div>
           <div class="form-group">
-              <label for="userEmail">Hero Power</label>
-              <select class="form-control"  id="userEmail"
+              <label for="userEmail">Email</label>
+              <input type="text"  class="form-control" id="userEmail"
+                     [(ngModel)]="user.userEmail" name="userEmail">
+          </div>
+          <div class="form-group">
+              <label for="role">Role</label>
+              <select class="form-control"  id="role"
                       required
-                      [(ngModel)]="model.userEmail" name="userEmail">
+                      [(ngModel)]="user.role" name="role">
                 <option *ngFor="let role of roles" [value]="role">{{user.role}}</option>
               </select>
           </div>
@@ -41,7 +46,7 @@
             </div>
           </div> -->
           <div class="modal-footer">
-              <button type="submit" class="btn btn-success" [disabled]="!editForm.valid"  >Login</button>
+              <button type="submit" class="btn btn-success" >Edit</button>
           </div>
         </form>
   </div>

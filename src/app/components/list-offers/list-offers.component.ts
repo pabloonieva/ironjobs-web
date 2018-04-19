@@ -25,14 +25,16 @@ export class ListOffersComponent implements OnInit {
   ){}
 
   ngOnInit() {
+    
     this.user = this.sessionService.getUser();
 
     this.offersService.list()
+      .catch((error) => {this.router.navigate(['/home']); })
       .subscribe((offers: Array<Offer>) => {
         if(this.user.role==='COMPANY'){
           this.offers = offers.filter(offer => offer.company === this.user.name)
         }else{
-          this.offers = offers
+          this.offers = offers;
         }
     });
   }
