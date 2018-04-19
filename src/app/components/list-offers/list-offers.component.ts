@@ -25,9 +25,8 @@ export class ListOffersComponent implements OnInit {
   ){}
 
   ngOnInit() {
-    
-    this.user = this.sessionService.getUser();
 
+    this.user = this.sessionService.getUser();
     this.offersService.list()
       .catch((error) => {this.router.navigate(['/home']); })
       .subscribe((offers: Array<Offer>) => {
