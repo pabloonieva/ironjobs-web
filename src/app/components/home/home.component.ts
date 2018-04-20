@@ -5,7 +5,8 @@ import { Observable, Subscription } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
-import { ModalComponent } from './../misc/modal/modal.component'
+import { ModalComponent } from './../misc/modal/modal.component';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
   user: User;
   userSubscription: Subscription;
   modal: NgbModalRef;
+  videoUrl: string = environment.production ? '/ironjobs-web/assets/videos/ironhack-video-3.mp4' : '/assets/videos/ironhack-video-3.mp4';
 
   constructor(
     private modalService: NgbModal,
