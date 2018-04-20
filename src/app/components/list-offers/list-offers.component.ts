@@ -5,6 +5,8 @@ import { Offer } from './../../shared/model/offer.model';
 import { User } from './../../shared/model/user.model';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
   selector: 'app-list-offers',
