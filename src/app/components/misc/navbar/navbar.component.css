@@ -4,11 +4,6 @@
 nav {
     margin: 0;
     color: white;
-}
-.content {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 20px;
-    z-index:300000;
+    opacity: 0.8;
+    z-index: 20000;
 }
