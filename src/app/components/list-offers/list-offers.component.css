@@ -4,3 +4,12 @@
 .hideButton{
   display: none;
 }
+#buttonNewJob{
+  background-color: #32c3ff;
+  color: white;
+}
+.deleteButton{
+  background-color: red;
+  color: white;
+  opacity: 0.7;
+}

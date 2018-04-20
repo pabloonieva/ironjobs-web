@@ -21,7 +21,7 @@
 .homeContent h2{
   font-size: 35px;
 }
-#ironColor{
+.ironColor{
   color: #32c3ff;
 }
 .buttons{
@@ -32,9 +32,11 @@
 .buttons button{
   font-size: 25px;
   padding: 10px 20px;
-  opacity: 0.7;
+  opacity: 0.9;
   border-radius: 8px;
   min-height: 60px;
+  background-color: #32c3ff;
+  border: #32c3ff;
 }
 
 .btn-outline-primary {

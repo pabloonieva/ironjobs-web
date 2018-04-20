@@ -58,6 +58,9 @@ export class ListOffersComponent implements OnInit {
   }
 
   onSubmitOffer(){
+    if(this.user.role === 'COMPANY'){
+      this.offer.company = this.user.name;
+    }
     this.offersService.create(this.offer)
       .subscribe(offer => {
           this.offers.push(offer);
