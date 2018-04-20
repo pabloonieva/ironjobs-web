@@ -1,3 +1,19 @@
 <video autoplay muted loop id="myVideo">
   <source src="/assets/videos/ironhack-video-3.mp4" type="video/mp4">
 </video>
+<div class="homeContent">
+  <h1><span>Welcome to the Ironhack platform</span></h1>
+  <h2><span id="ironColor">Preparing the next generation of digital creators</span></h2>
+  <br>
+  <div class="buttons">
+    <a href="http://learn.ironhack.com/#/">
+      <button type="button" class="btn btn-light">Learn</button>
+    </a>
+    <a href="https://ironhackshop.herokuapp.com/home"> 
+      <button type="button" class="btn btn-light">IronShop</button>
+    </a>
+    <button type="button" (click)="open(content)" class="btn btn-light"><app-modal [text]="text" [navBar]="navBar"></app-modal>
+    </button>
+
+  </div>
+</div>

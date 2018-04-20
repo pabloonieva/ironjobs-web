@@ -12,6 +12,8 @@ import { Session } from 'selenium-webdriver';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   user: User;
+  text: any = "Log In"
+  navBar: boolean = true;
   userSubscription: Subscription;
 
   constructor(
