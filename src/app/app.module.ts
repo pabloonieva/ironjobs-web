@@ -44,6 +44,9 @@ import { ModalUserComponent } from './components/users/modal-user/modal-user.com
     NgbModule.forRoot()
   ],
   providers: [SessionService, OffersService, UsersService],
+  entryComponents: [
+    ModalUserComponent
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

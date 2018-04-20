@@ -4,7 +4,7 @@ import { User } from './../../../shared/model/user.model';
 import { SessionService } from './../../../shared/services/session.services';
 import { Component, NgModule, OnInit, Input } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
+import { NgbModalRef, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,6 +20,7 @@ export class ModalUserComponent implements OnInit {
   modal: NgbModalRef;
 
   constructor(
+    public activeModal: NgbActiveModal,
     private modalService: NgbModal,
     private sessionService: SessionService,
     private usersService: UsersService,
@@ -27,6 +28,7 @@ export class ModalUserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.user);
    this.usersService.list()
    .subscribe((users: Array<User>) => this.users = users);
   }

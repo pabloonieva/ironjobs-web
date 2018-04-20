@@ -1,8 +1,11 @@
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UsersService } from './../../../shared/services/users.service';
 import { User } from './../../../shared/model/user.model';
 import { SessionService } from './../../../shared/services/session.services';
 import { Component, OnInit, NgModule, Input  } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalUserComponent } from '../modal-user/modal-user.component';
+
 
 
 
@@ -19,7 +22,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private router: Router,
     private usersService: UsersService,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -36,8 +40,8 @@ export class DashboardComponent implements OnInit {
         });
     }
   }
-  onClickEdit(id: string) {
-      this.usersService.edit(this.user)
-        .subscribe();
+  onClickEdit(user: User) {
+    const modalRef = this.modalService.open(ModalUserComponent);
+    modalRef.componentInstance.user = Object.assign({}, this.user):
   }
 }
