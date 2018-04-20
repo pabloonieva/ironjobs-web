@@ -1,12 +1,12 @@
-
-  <br><hr>
-  <section class="container">
+<br><br>
+<section class="container">
     <h5 *ngIf="user.role === 'ADMIN'">Hello Admin. Here we can see and edit all offers for Ironhackers:</h5>
     <h5 *ngIf="user.role === 'COMPANY'">Hello company. Here you can see all your offers for Ironhackers:</h5>
     <h5 *ngIf="user.role === 'IRONHACKER'">Hey Ironhacker. Here you can see all IronJob offers:</h5>
-    <table class="table table-striped">
+    <br>
       <!--IF WE ARE ADMIN-->
-      <div *ngIf="user.role === 'ADMIN'">
+    <div *ngIf="user.role === 'ADMIN'">
+      <table class="table">
         <thead>
           <tr>
             <th scope="col">Job Offer</th>
@@ -17,13 +17,15 @@
         </thead>
         <tbody>
           <tr *ngFor="let offer of offers">
-              <th> {{ offer.title }} </th><td> {{ offer.company }} </td><td> {{ offer.salary }}</td>
-              <td><button class="btn btn-danger" (click)="onClickDelete(offer._id)">Delete</button></td>
+              <th scope="row"> {{ offer.title }} </th><td> {{ offer.company }} </td><td> {{ offer.salary }}</td>
+              <td><button class="btn deleteButton" (click)="onClickDelete(offer._id)">Delete</button></td>
           </tr>
         </tbody>
-      </div>
+      </table>
+    </div>
       <!--IF WE ARE AN IRONHACKER-->
-      <div *ngIf="user.role === 'IRONHACKER'">
+    <div *ngIf="user.role === 'IRONHACKER'">
+      <table class="table">
         <thead>
           <tr>
             <th scope="col">Job Offer</th>
@@ -38,31 +40,32 @@
             <td><button class="btn btn-info" (click)="onClickApply(offer._id)">Apply!</button></td>
           </tr>
         </tbody>
-      </div>
+      </table>
+    </div>
         <!--IF WE ARE A COMPANY-->
-        <div *ngIf="user.role === 'COMPANY'">
-          <thead>
-            <tr>
-              <th scope="col">Job Offer</th>
-              <th scope="col">Company</th>
-              <th scope="col">Salary</th>
-              <th scope="col">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let offer of offers">
-                <th> {{ offer.title }} </th><td> {{ offer.company }} </td><td> {{ offer.salary }}</td>
-                <td><button class="btn btn-danger" (click)="onClickDelete(offer._id)">Delete</button></td>
-            </tr>
-          <tbody>
-        </div>
-
-    </table>
-  </section><br>
+    <div *ngIf="user.role === 'COMPANY'">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Job Offer</th>
+            <th scope="col">Company</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let offer of offers">
+              <th> {{ offer.title }} </th><td> {{ offer.company }} </td><td> {{ offer.salary }}</td>
+              <td><button class="btn deleteButton" (click)="onClickDelete(offer._id)">Delete</button></td>
+          </tr>
+        <tbody>
+      </table>
+    </div>
+</section><br>
 
 <!--IF WE ARE A COMPANY or ADMIN-->
 <div *ngIf="user.role === 'ADMIN' || user.role === 'COMPANY'" class="form-group container">
-  <button class="btn btn-success" id="buttonNewJob" (click)="onClickSeeForm()">Add new Job Offer</button>
+  <button class="btn" id="buttonNewJob" (click)="onClickSeeForm()">Add new Job Offer</button>
   <div class="hideForm" id="newJobForm">
     <p>Here you can create your offers for Ironhackers:</p>
     <tr>
@@ -72,7 +75,7 @@
           <input class="form-control" type="text" name="title" placeholder="Job title" [(ngModel)]="offer.title" required>  <!-- #title="ngModel" -->
         </div>
         <!-- How can I add directly the company name if we are loged in as company -->
-        <div class="form-group">
+        <div *ngIf="user.role === 'ADMIN'" class="form-group">
           <label>Company name:</label>
           <input class="form-control" type="text" name="company" placeholder="Company name" [(ngModel)]="offer.company" required>
         </div>

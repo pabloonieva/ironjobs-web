@@ -42,6 +42,6 @@ export class DashboardComponent implements OnInit {
   }
   onClickEdit(user: User) {
     const modalRef = this.modalService.open(ModalUserComponent);
-    // modalRef.componentInstance.user = Object.assign({}, this.user):
+    modalRef.componentInstance.user = Object.assign({}, this.user);
   }
 }
