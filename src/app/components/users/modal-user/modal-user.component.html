@@ -3,7 +3,8 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <form (ngSubmit)="onSubmitEdit(editForm)" #editForm="ngForm">
+  <form (ngSubmit)="onSubmit()" #editForm="ngForm">
+      <div class="modal-body">
       <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name"required
@@ -20,14 +21,22 @@
                  [(ngModel)]="user.userEmail" name="userEmail">
       </div>
       <div class="form-group">
+          <label for="Password">Password</label>
+          <input type="password"  class="form-control" id="Password"
+                 [(ngModel)]="user.password" name="password">
+      </div>
+      <div class="form-group">
           <label for="role">Role</label>
           <select class="form-control"  id="role"
-                  required
-                  [(ngModel)]="user.role" name="role">
-            <option *ngFor="let role of roles" [value]="role">{{user.role}}</option>
+                  required [(ngModel)]="user.role" name="role">
+                  <option value="Ironhacker">Ironhacker</option>
+                  <option value="ADMIN">Admin</option>
+                  <option value="COMPANY">Company</option>
           </select>
       </div>
+    </div>
       <div class="modal-footer">
-          <button type="submit" class="btn btn-success" >Edit</button>
+          <button type="submit" class="btn btn-success"> Create</button>
       </div>
     </form>
+ 

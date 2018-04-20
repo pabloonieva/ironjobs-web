@@ -28,28 +28,37 @@ export class ModalUserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.user);
    this.usersService.list()
    .subscribe((users: Array<User>) => this.users = users);
   }
 
+  onSubmit() {
+    this.isNewUser() ? this.createUser() : this.updateUser();
+    this.router.navigate(['/users']);
+  }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
+  getTitle(): string {
+    return this.isNewUser() ? 'New User' : 'Edit User';
   }
-  onClickEdit(id: any, content) {
-    this.usersService.currentUser(this.user);
-    this.modal = this.modalService.open(content);
-      console.log(id);
+
+  private isNewUser() {
+    return this.user._id === undefined;
   }
-  onSubmitEdit() {
-    this.usersService.edit(this.user)
-    .subscribe();
+
+  private createUser() {
+    this.usersService.create(this.user)
+      .subscribe(() => {
+        this.user = new User();
+        this.activeModal.close();
+        this.router.navigate(['/users']);
+      });
+  }
+
+  private updateUser() {
+    this.usersService.edit(this.user).subscribe(() => {
+      this.user = new User();
+
+      this.activeModal.close();
+    });
   }
 }
