@@ -5,6 +5,7 @@ import { Observable, Subscription } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
+import { ModalComponent } from './../misc/modal/modal.component'
 
 @Component({
   selector: 'app-home',
@@ -29,8 +30,8 @@ export class HomeComponent implements OnInit {
       .subscribe(user => this.user = user);
   }
 
-  open(content) {
-    this.modal = this.modalService.open(content);
+  open() {
+    this.modal = this.modalService.open(ModalComponent);
   }
 
 }
