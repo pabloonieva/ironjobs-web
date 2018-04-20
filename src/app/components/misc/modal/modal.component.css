@@ -1,0 +1,10 @@
+button {
+  border: 0;
+  background-color: transparent;
+}
+
+.btn-login-modal {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <img src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/4017/s300/logo-ironhack-blue.png" width="48" height="50" class="d-inline-block align-middle ml-4">
-    <a class="navbar-brand name" href="#">Ironjobs</a>
+    <a class="navbar-brand name" href="#">Ironhack Platform</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,7 +14,7 @@
         </li>
       </ul>
         <span class="navbar-text" *ngIf="!user">
-            <app-modal></app-modal>
+            <app-modal [text]="text" [navBar]="navBar"></app-modal>
         </span>
       <ul *ngIf="user">
         <button class="btn btn-outline-primary" (click)="onClickLogout()">Logout</button>
