@@ -1,0 +1,19 @@
+.btn-left{
+  flex-direction: row
+}
+.centering{
+  justify-content:center;
+  flex-direction: row;
+  padding-left: 50px;
+  padding-right: 250px;
+
+}
+.headerUser{
+  margin:0 auto;
+  width: 100px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.list-group-item{
+  flex-direction: row;
+}
