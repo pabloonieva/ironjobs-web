@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs/Rx';
+import { BaseApiService } from './base-api.service';
 
 
 const CURRENT_USER_KEY = 'currentUser';

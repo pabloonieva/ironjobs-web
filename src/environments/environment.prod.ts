@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  baseApi: 'https://ironjobs-api.herokuapp.com/'
 };
