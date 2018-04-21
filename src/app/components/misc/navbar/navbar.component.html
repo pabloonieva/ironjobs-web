@@ -1,16 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <img src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/4017/s300/logo-ironhack-blue.png" width="48" height="50" class="d-inline-block align-middle ml-4">
-    <a class="navbar-brand name" href="#">Ironhack Platform</a>
+    <a class="navbar-brand name" href="javascript:;">Ironhack Platform</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active" *ngIf="user">
-          <a class="nav-link" href="#">Hola {{ user.name }} <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="javascript:;">Hola {{ user.name }} <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active" *ngIf="user && user.role == 'ADMIN'" >
-          <a class="nav-link" href="/users"> Users <span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['/users']"> Users <span class="sr-only">(current)</span></a>
         </li>
       </ul>
         <span class="navbar-text" *ngIf="!user">
