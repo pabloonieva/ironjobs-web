@@ -1,10 +1,23 @@
-<div *ngIf="offer">
 
-  <div class="offer-info">
-    <h2> {{ offer.title }}</h2>
-    <h3> {{ offer.company }} </h3>
-    <h3> {{ offer.salary }} </h3>
 
-    <button class="btn btn-danger" (click)="onClickDelete()">Delete</button>
-  </div>
-</div>
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Offer info</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="offer-info">
+        <h3> {{ offer.title }}</h3>
+        <p> {{ offer.company }} </p>
+        <p> {{ offer.description }} </p>
+        <p> {{ offer.salary }} </p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+    </div>
+  </ng-template>
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Show details</button>
+  <pre>{{closeResult}}</pre>
