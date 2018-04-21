@@ -17,7 +17,7 @@ import { ModalUserComponent } from '../modal-user/modal-user.component';
 })
 export class DashboardComponent implements OnInit {
   users: Array<User> = [];
-  @Input() user: User = new User();
+  user: User = new User();
 
   constructor(
     private router: Router,
@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.user);
     if (this.sessionService.getUser()) {
       this.usersService.list()
       .subscribe((users: Array<User>) => this.users = users);
@@ -40,8 +41,9 @@ export class DashboardComponent implements OnInit {
         });
     }
   }
-  onClickEdit(user: User) {
+  onClickCreate(user: User) {
     const modalRef = this.modalService.open(ModalUserComponent);
     modalRef.componentInstance.user = Object.assign({}, this.user);
   }
+ 
 }

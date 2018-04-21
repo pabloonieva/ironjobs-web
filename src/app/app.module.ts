@@ -21,6 +21,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ModalComponent } from './components/misc/modal/modal.component';
 import { OfferItemComponent } from './components/offer-item/offer-item.component';
 import { ModalUserComponent } from './components/users/modal-user/modal-user.component';
+import { ModalEditComponent } from './components/users/modal-edit/modal-edit.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ModalUserComponent } from './components/users/modal-user/modal-user.com
     HomeComponent,
     OfferItemComponent,
     DashboardComponent,
-    ModalUserComponent
+    ModalUserComponent,
+    ModalEditComponent
   ],
   imports: [
     BrowserModule,

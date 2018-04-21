@@ -12,18 +12,17 @@
             </tr>
           </thead>
           <tr *ngFor="let user of users">
-             
               <td>{{ user.name }}</td>
               <td>{{ user.lastName }}</td>
               <td>{{ user.userEmail }}</td>
               <td>{{ user.role }}</td>
               <td>
                 <button class="btn btn-danger btn-left" (click)="onClickDelete(user._id)">Delete</button>
-                <button class="btn btn-outline-primary" (click)="onClickEdit(user)" >Edit</button>
+                <app-modal-edit [user]="user"></app-modal-edit>
               </td>
             </tr>
  
 </table>
 </div>
 
-<button class="btn btn-outline-primary" (click)="onClickEdit(user)" >Create new User</button>
+<button class="btn btn-outline-primary" (click)="onClickCreate()" >Create new User</button>
